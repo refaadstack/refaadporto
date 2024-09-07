@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redho Fadillah Adha</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    @vite('resources/css/app.css')
+    {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap" rel="stylesheet" />
     <style>
         body {
@@ -19,12 +20,12 @@
     <!-- Header -->
     <header class="bg-gray-800 p-6">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-white">refaadstack</h1>
+            <h1 class="text-3xl font-bold text-white"><a href="/">refaadstack</a></h1>
             <nav class="hidden lg:block">
                 <ul class="flex space-x-6">
                     <li><a href="#home" class="hover:text-yellow-500">Home</a></li>
                     <li><a href="#about" class="hover:text-yellow-500">About</a></li>
-                    <li><a href="#portfolio" class="hover:text-yellow-500">Portfolio</a></li>
+                    <li><a href="#portfolio" class="hover:text-yellRFABlog</a></li>
                     <li><a href="#contact" class="hover:text-yellow-500">Contact</a></li>
                 </ul>
             </nav>
@@ -123,29 +124,55 @@
     <section id="portfolio" class="bg-gray-800 py-16">
         <div class="container mx-auto text-center">
             <h3 class="text-3xl font-bold text-yellow-500 mb-12">Portfolio</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                @forelse ($portfolios as $item)
-                <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg">
-                    <img src="{{ Storage::url($item->thumbnail) }}" alt="SMKN SPP Project" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-lg font-bold text-white">{{ $item->title }}</h4>
-                        <p class="text-gray-400 mt-2">{!! Str::limit($item->description, 89, '')!!}</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    @forelse ($portfolios as $item)
+                    <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg">
+                        <img src="{{ Storage::url($item->thumbnail) }}" alt="SMKN SPP Project" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-lg font-bold text-white">{{ $item->title }}</h4>
+                            <p class="text-gray-400 mt-2">{!! Str::limit($item->description, 89, '')!!}</p>
 
-                        {{-- button card --}}
-                        <a href="{{ route('front.detail',$item->id) }}" class="mt-6 inline-block bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full hover:bg-yellow-600 transition duration-100">details</a>
-                        {{-- end button --}}
+                            {{-- button card --}}
+                            <a href="{{ route('front.detail',$item->slug) }}" class="mt-6 inline-block bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full hover:bg-yellow-600 transition duration-100">details</a>
+                            {{-- end button --}}
+                        </div>
+                    </div>
+                        
+                    @empty
+                    <div class="item-center grid grid-cols-1">
+                        <p>Belum ada portfolio sayangku</p>
+                    </div>
+                    @endforelse
+                </div>
+            </div>
+        </section>
+        <section id="blog" class="bg-gray-800 py-16">
+            <div class="container mx-auto text-center">
+                <h3 class="text-3xl font-bold text-yellow-500 mb-12">RFABlog</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Card 1 -->
+                        @forelse ($blogs as $item)
+                        <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg">
+                            {{-- <img src="{{ Storage::url($item->thumbnail) }}" alt="SMKN SPP Project" class="w-full h-48 object-cover"> --}}
+                            <div class="p-6">
+                                <h4 class="text-lg font-bold text-white">{{ $item->title }}</h4>
+                                <p class="text-gray-400 mt-2">{!! Str::limit($item->description, 89, '')!!}</p>
+    
+                                {{-- button card --}}
+                                <a href="{{ route('front.blogs',$item->slug) }}" class="mt-6 inline-block bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full hover:bg-yellow-600 transition duration-100">details</a>
+                                {{-- end button --}}
+                            </div>
+                        </div>
+                            
+                        @empty
+                        <div class="item-center grid grid-cols-1">
+                            <p>Belum ada blog sayangku</p>
+                        </div>
+                        @endforelse
                     </div>
                 </div>
-                    
-                @empty
-                <div class="item-center grid grid-cols-1">
-                    <p>Belum ada portfolio sayangku</p>
-                </div>
-                @endforelse
-            </div>
-        </div>
-    </section>
+            </section>
 
     <!-- Footer -->
     <footer class="bg-gray-800 py-6 text-center">

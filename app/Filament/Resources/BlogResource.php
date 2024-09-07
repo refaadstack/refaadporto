@@ -4,14 +4,20 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogResource\Pages;
 use App\Filament\Resources\BlogResource\RelationManagers;
+use App\Filament\Resources\BlogResource\RelationManagers\PhotoGalleriesRelationManager;
 use App\Models\Blog;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+use function Laravel\Prompts\text;
 
 class BlogResource extends Resource
 {
@@ -23,15 +29,17 @@ class BlogResource extends Resource
     {
         return $form
             ->schema([
-                //
-            ]);
+                TextInput::make('title')->required()->maxLength(255),
+                RichEditor::make('content')->required()->maxLength(1024),
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title'),
+                TextColumn::make('content')->html(),
             ])
             ->filters([
                 //
@@ -49,7 +57,7 @@ class BlogResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PhotoGalleriesRelationManager::class,
         ];
     }
 

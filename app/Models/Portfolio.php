@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class Portfolio extends Model
 {
@@ -13,6 +14,12 @@ class Portfolio extends Model
     protected $fillable = [
         'personal_data_id', 'title', 'description','thumbnail',
     ];
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
 
     protected static function boot()
     {
