@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     public function index(){
-            $portfolios = Portfolio::all();
-            $blogs = Blog::orderBy('id','asc')->get();
+            $portfolios = Portfolio::orderBy('id','DESC')->get();
+            $blogs = Blog::latest()->take(6)->get();
 
         return view('front.index',compact(['portfolios','blogs']));
     }

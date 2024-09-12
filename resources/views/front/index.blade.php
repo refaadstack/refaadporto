@@ -25,8 +25,8 @@
                 <ul class="flex space-x-6">
                     <li><a href="#home" class="hover:text-yellow-500">Home</a></li>
                     <li><a href="#about" class="hover:text-yellow-500">About</a></li>
-                    <li><a href="#portfolio" class="hover:text-yellRFABlog</a></li>
-                    <li><a href="#contact" class="hover:text-yellow-500">Contact</a></li>
+                    <li><a href="#portfolio" class="hover:text-yellRFABlog">Portfolio</a></li>
+                    <li><a href="#blog" class="hover:text-yellow-500">Blog</a></li>
                 </ul>
             </nav>
         </div>
@@ -56,12 +56,12 @@
                 </svg>
                 <span class="text-sm">Portfolio</span>
             </a>
-            <a href="#contact" class="flex flex-col items-center text-gray-400 hover:text-yellow-500 active:text-yellow-500">
+            <a href="#blog" class="flex flex-col items-center text-gray-400 hover:text-yellow-500 active:text-yellow-500">
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M16 2a2 2 0 012 2v12a2 2 0 01-2 2h-4l-4 4v-4H8a2 2 0 01-2-2V4a2 2 0 012-2h8z"></path>
                 </svg>
-                <span class="text-sm">Contact</span>
+                <span class="text-sm">Blog</span>
             </a>
         </div>
     </nav>
@@ -121,7 +121,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="bg-gray-800 py-16">
+    <section id="portfolio" class="bg-gray-800 py-10">
         <div class="container mx-auto text-center">
             <h3 class="text-3xl font-bold text-yellow-500 mb-12">Portfolio</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -147,9 +147,9 @@
                 </div>
             </div>
         </section>
-        <section id="blog" class="bg-gray-800 py-16">
-            <div class="container mx-auto text-center">
-                <h3 class="text-3xl font-bold text-yellow-500 mb-12">RFABlog</h3>
+        <section id="blog" class="bg-gray-800 py-10">
+            <div class="container mx-auto">
+                <h3 class="text-3xl font-bold text-yellow-500 mb-12">My Blog</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Card 1 -->
                         @forelse ($blogs as $item)
@@ -160,7 +160,7 @@
                                 <p class="text-gray-400 mt-2">{!! Str::limit($item->description, 89, '')!!}</p>
     
                                 {{-- button card --}}
-                                <a href="{{ route('front.blogs',$item->slug) }}" class="mt-6 inline-block bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full hover:bg-yellow-600 transition duration-100">details</a>
+                                <a href="{{ route('front.blogs',$item->slug) }}" class="mt-6 inline-block bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full hover:bg-yellow-600 transition duration-100">read more..</a>
                                 {{-- end button --}}
                             </div>
                         </div>

@@ -96,7 +96,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="mt-10 mx-auto">
+            <div class="mt-10">
                 <div class="prose prose-lg prose-yellow max-w-none text-gray-800 bg-gray-400 rounded-lg p-6">
                     {!! $blog->content !!}
                 </div>

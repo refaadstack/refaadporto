@@ -30,7 +30,7 @@ class BlogResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')->required()->maxLength(255),
-                RichEditor::make('content')->required()->maxLength(1024),
+                RichEditor::make('content')->required(),
             ])->columns(1);
     }
 
