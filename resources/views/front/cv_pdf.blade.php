@@ -19,12 +19,13 @@
         .container {
             width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            /* padding: 20px; */
             max-width: 800px;
-            position: relative;
+            /* position: relative; */
+            text-align: justify;
         }
 
-        .left-side {
+        /* .left-side {
             width: 30%;
             background-color: #dfd7d3;
             box-sizing: border-box;
@@ -33,36 +34,37 @@
             top: 0;
             bottom: 0;
             left: 0;
-            height: 100%;
-            page-break-inside: avoid;
+            height: 100vh;
+
         }
 
         .right-side {
             width: 70%;
             margin-left: 33%;
-            /* background-color: #dfd7d3; */
             box-sizing: border-box;
-            /* padding: 10px; */
             position: fixed;
             top: 0;
             bottom: 0;
             right: 0;
-            height: 100%;
-            page-break-inside: avoid;
-        }
+          
+            page-break-inside: always;
+        } */
 
         h1 {
-            color: #dfd7d3;
+            /* color: #dfd7d3; */
         } 
 
         h2 {
             margin-bottom: 10px;
             margin-right: 20px;
         }
+        h3{
+            margin:0;
+        }
 
         p {
             margin: 0;
-            margin-right: 10px;
+            /* margin-right: 10px; */
             max-width: 100%; /* Ensures paragraph does not exceed container width */
             word-wrap: break-word; /* Breaks long words */
             overflow-wrap: break-word; /* Ensures proper text wrapping */
@@ -77,18 +79,24 @@
 
         li {
         }
-
-        .chain-section {
-            margin-bottom: 2rem;
-            position: relative;
-            padding-left: 30px;
+        .letter{
+            margin-top: 10px;
         }
+        .contact{
+            text-align: center;
+        }
+
+        /* .chain-section {
+            margin-bottom: 2rem;
+            /* position: relative; */
+            /* padding-left: 30px; */
+        } */
 
         @page {
             margin: 20px;
         }
 
-        @media print {
+        /* @media print {
             .left-side, .right-side {
                 float: none;
                 width: 100%;
@@ -97,41 +105,22 @@
             .container {
                 page-break-inside: avoid;
             }
-        }
+        } */
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="left-side border-left">
-            <h2>Contact Information</h2>
-            <p>{{ $pdata->email }}</p>
-            <p>{{ $pdata->phone }}</p>
-            <p>{{ $pdata->website }}</p>
-
-            <h2>Skills</h2>
-            <ul>
-                <li>Laravel</li>
-                <li>MySQL</li>
-                <li>Javascript</li>
-                <li>Livewire</li>
-                <li>React</li>
-                <li>PHP</li>
-            </ul>
-
-            <h2>Languages</h2>
-            <ul>
-                <li>Bahasa</li>
-                <li>English</li>
-            </ul>
-        </div>
-
-        <div class="right-side">
-            <div class="chain-section">
-                <h1>{{ $pdata->first_name }} {{ $pdata->last_name }}</h1>
-                <p>Hai, saya seorang web developer yang lulus dari Teknik Informatika. Saya selalu memiliki ketertarikan dalam dunia pemrograman, tetapi pengembangan web adalah bidang yang benar-benar saya minati. Saya senang membangun website yang bersih dan fungsional, serta menikmati proses belajar terus-menerus seiring dengan perkembangan teknologi web. Baik itu front-end maupun back-end, saya selalu antusias menghadapi tantangan baru dan menciptakan sesuatu yang keren!</p>
+        <div class="chain-section">
+            <div class="contact">
+            <h1>{{ $pdata->first_name }} {{ $pdata->last_name }}</h1>
+                <h3>Contact Information</h3>
+                <p> <strong>{{ $pdata->email }} | {{ $pdata->phone }} | {{ $pdata->website }} </strong></p>
             </div>
-
+        </div>
+        <div class="letter">
+            <p>Halo, Saya seorang Fullstack Web Developer yang telah lulus dengan gelar di bidang Ilmu Komputer. Saya selalu tertarik dengan bidang pemrograman, khususnya dalam pengembangan web. Proses membangun situs web yang cepat dan fungsional selalu menjadi kekuatan yang memotivasi saya. Saya menemukan kepuasan luar biasa dalam perjalanan pembelajaran berkelanjutan seiring dengan berkembangnya teknologi web. Baik itu detail desain front-end yang rumit atau ketangguhan pengembangan back-end, saya terus didorong oleh semangat dalam menghadapi tantangan baru dan berinovasi untuk menciptakan pengalaman web yang luar biasa.</p>
+        </div>
             <div class="chain-section">
                 <h2>Experience</h2>
                 @forelse ($experience as $item)
@@ -174,7 +163,24 @@
                         <p>No projects</p>
                     @endforelse
                 </ul>
+
+                <h2>Skills</h2>
+                <ul>
+                    <li>Laravel</li>
+                    <li>MySQL</li>
+                    <li>Javascript</li>
+                    <li>Livewire</li>
+                    <li>React</li>
+                    <li>PHP</li>
+                </ul>
+    
+                <h2>Languages</h2>
+                <ul>
+                    <li>Bahasa</li>
+                    <li>English</li>
+                </ul>
             </div>
+            
         </div>
     </div>
 </body>
