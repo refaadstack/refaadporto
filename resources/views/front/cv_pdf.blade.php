@@ -69,13 +69,13 @@
         }
 
         ul {
-            list-style: none;
+            /* list-style: none; */
             padding: 0;
-            margin: 0;
+            margin-left: 20px;
+            margin-top: 0;
         }
 
         li {
-            margin-bottom: 10px;
         }
 
         .chain-section {
@@ -137,9 +137,11 @@
                 @forelse ($experience as $item)
                     <p>{{ $item->company }} ({{ $item->start_date }} to {{ $item->end_date }})</p>
                     <p><strong>{{ $item->position }}</strong></p>
-                    @foreach ($item->jobDescriptions as $it)
-                        <p>{!! $it->description !!}</p>
-                    @endforeach
+                    <ul>
+                            @foreach ($item->jobDescriptions as $it)
+                                <li>{!! $it->description !!}</li>
+                            @endforeach
+                    </ul>
                 @empty
                     <p>No experiences</p>
                 @endforelse
@@ -147,22 +149,31 @@
 
             <div class="chain-section">
                 <h2>Education</h2>
-                @forelse ($education as $edu)
-                    <p>{{ $edu->degree }} ({{ $edu->start_date }} to {{ $edu->end_date }})</p>
-                    <p><strong>{{ $edu->institution }}</strong></p>
-                @empty
-                    <p>No education</p>
-                @endforelse
+                <ul>
+                    @forelse ($education as $edu)
+                        <li>
+
+                            <p>{{ $edu->degree }} ({{ $edu->start_date }} to {{ $edu->end_date }})</p>
+                            <p><strong>{{ $edu->institution }}</strong></p>
+                        </li>
+                    @empty
+                        <p>No education</p>
+                    @endforelse
+                </ul>
             </div>
 
             <div class="chain-section" style="margin-right: 20px">
                 <h2>Projects</h2>
-                @forelse ($portfolios as $item)
-                    <p><strong>{{ $item->title }}</strong></p>
-                    <p>{!! $item->description !!}</p>
-                @empty
-                    <p>No projects</p>
-                @endforelse
+                <ul>
+                    @forelse ($portfolios as $item)
+                        <li>
+                            <p><strong>{{ $item->title }}</strong></p>
+                            <p>{!! $item->description !!}</p>
+                        </li>
+                    @empty
+                        <p>No projects</p>
+                    @endforelse
+                </ul>
             </div>
         </div>
     </div>
