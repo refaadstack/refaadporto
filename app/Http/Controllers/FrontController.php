@@ -7,6 +7,7 @@ use App\Models\Education;
 use App\Models\Experience;
 use App\Models\PersonalData;
 use App\Models\Portfolio;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -28,14 +29,20 @@ class FrontController extends Controller
         return view('front.detail',compact(['portfolios']));
     }
     public function cv(){
-            $pdata = PersonalData::where('id','1')->first();
-            $portfolios = Portfolio::orderBy('id','desc')->get();
-            $education = Education::orderBy('id','desc')->get();
-            $experience = Experience::with('jobDescriptions')->orderBy('id','desc')->get();
-            
-            // dd($portfolios);
 
-        return view('front.cv_pdf',compact(['portfolios','pdata','education','experience']));
+            $data = [
+
+                'pdata' => PersonalData::where('id','1')->first(),
+                'portfolios' => Portfolio::orderBy('id','desc')->get(),
+                'education' => Education::orderBy('id','desc')->get(),
+                'experience' => Experience::with('jobDescriptions')->orderBy('id','desc')->get(),
+                
+            ];
+            // dd($data);
+                $pdf = PDF::loadView('front.cv_pdf',$data);
+            
+
+        return $pdf->stream('cv-redho.pdf');
     }
 
 
