@@ -157,7 +157,7 @@
                             {{-- <img src="{{ Storage::url($item->thumbnail) }}" alt="SMKN SPP Project" class="w-full h-48 object-cover"> --}}
                             <div class="p-6">
                                 <h4 class="text-lg font-bold text-white">{{ $item->title }}</h4>
-                                <p class="text-gray-400 mt-2">{!! Str::limit($item->description, 89, '')!!}</p>
+                                <p class="text-gray-400 mt-2">{!! Str::limit($item->content, 89, '')!!}</p>
     
                                 {{-- button card --}}
                                 <a href="{{ route('front.blogs',$item->slug) }}" class="mt-6 inline-block bg-yellow-500 text-black font-semibold py-3 px-8 rounded-full hover:bg-yellow-600 transition duration-100">read more..</a>
