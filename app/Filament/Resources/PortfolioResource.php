@@ -41,7 +41,7 @@ class PortfolioResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title'),
-                TextColumn::make('description')->html(),
+                TextColumn::make('description')->html()->limit(20),
                 ImageColumn::make('thumbnail'),
             ])
             ->filters([

@@ -39,7 +39,7 @@ class BlogResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title'),
-                TextColumn::make('content')->html(),
+                TextColumn::make('content')->html()->limit(20),
             ])
             ->filters([
                 //
