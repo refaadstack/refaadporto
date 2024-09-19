@@ -9,8 +9,19 @@ export default {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+          primary: '#ffffff',
+          secondary: {
+              DEFAULT: '#ff69b4',
+              light: '#ff9cd6',
+              dark: '#cc5490',
+          },
+          'elegant-black': '#1a1a1a',
+      },
+    },
   },
   plugins: [
     typography,
