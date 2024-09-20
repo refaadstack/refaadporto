@@ -42,7 +42,7 @@ class FrontController extends Controller
                 $pdf = PDF::loadView('front.cv_pdf',$data);
             
 
-        return $pdf->stream('cv-redho.pdf');
+        return $pdf->stream('cv-redho-fadillah-adha.pdf');
     }
 
 

@@ -11,7 +11,7 @@ class Experience extends Model
     use HasFactory;
 
     protected $fillable = [
-        'personal_data_id', 'position', 'company', 'start_date', 'end_date',
+        'personal_data_id', 'position', 'company', 'start_date', 'end_date','is_current_job',
     ];
 
     protected static function boot()

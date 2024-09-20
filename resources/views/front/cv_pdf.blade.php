@@ -121,35 +121,41 @@
         <div class="letter">
             <p>Halo, Saya seorang Fullstack Web Developer yang telah lulus dengan gelar di bidang Ilmu Komputer. Saya selalu tertarik dengan bidang pemrograman, khususnya dalam pengembangan web. Proses membangun situs web yang cepat dan fungsional selalu menjadi kekuatan yang memotivasi saya. Saya menemukan kepuasan luar biasa dalam perjalanan pembelajaran berkelanjutan seiring dengan berkembangnya teknologi web. Baik itu detail desain front-end yang rumit atau ketangguhan pengembangan back-end, saya terus didorong oleh semangat dalam menghadapi tantangan baru dan berinovasi untuk menciptakan pengalaman web yang luar biasa.</p>
         </div>
-            <div class="chain-section">
-                <h2>Experience</h2>
-                @forelse ($experience as $item)
-                    <p>{{ $item->company }} ({{ $item->start_date }} to {{ $item->end_date }})</p>
-                    <p><strong>{{ $item->position }}</strong></p>
-                    <ul>
-                            @foreach ($item->jobDescriptions as $it)
-                                <li>{!! $it->description !!}</li>
-                            @endforeach
-                    </ul>
+        <div class="chain-section">
+            <h2>Experience</h2>
+            @forelse ($experience as $item)
+            <p>{{ $item->company }} 
+                ({{ \Carbon\Carbon::parse($item->start_date)->format('d F Y') }} - 
+                @if ($item->is_current_job == 1)
+                    Now)
+                @else
+                    {{ \Carbon\Carbon::parse($item->end_date)->format('d F Y') }})
+                @endif
+            </p>
+            <p><strong>{{ $item->position }}</strong></p>
+            <ul>
+                @foreach ($item->jobDescriptions as $it)
+                <li>{!! $it->description !!}</li>
+                @endforeach
+            </ul>
+            @empty
+            <p>No experiences</p>
+            @endforelse
+        </div>
+
+        <div class="chain-section">
+            <h2>Education</h2>
+            <ul>
+                @forelse ($education as $edu)
+                <li>
+                    <p>{{ $edu->degree }} ({{ \Carbon\Carbon::parse($edu->start_date)->format('d F Y') }} - {{ \Carbon\Carbon::parse($edu->end_date)->format('d F Y') }})</p>
+                    <p><strong>{{ $edu->institution }}</strong></p>
+                </li>
                 @empty
-                    <p>No experiences</p>
+                <p>No education</p>
                 @endforelse
-            </div>
-
-            <div class="chain-section">
-                <h2>Education</h2>
-                <ul>
-                    @forelse ($education as $edu)
-                        <li>
-
-                            <p>{{ $edu->degree }} ({{ $edu->start_date }} to {{ $edu->end_date }})</p>
-                            <p><strong>{{ $edu->institution }}</strong></p>
-                        </li>
-                    @empty
-                        <p>No education</p>
-                    @endforelse
-                </ul>
-            </div>
+            </ul>
+        </div>
 
             <div class="chain-section" style="margin-right: 20px">
                 <h2>Projects</h2>
@@ -183,6 +189,7 @@
             
         </div>
     </div>
-</body>
 
+
+</body>
 </html>

@@ -100,7 +100,7 @@
         <div class="container mx-auto mt-10">
             <div class="bg-gray-500 p-8 rounded-lg">
                 <h2 class="text-4xl font-bold text-secondary fade-in">{{ $blog->title }}</h2>
-                <p class="text-gray-300 mt-4 fade-in">{{ $blog->created_at->format('d M Y') }}</p>
+                <p class="text-gray-300 mt-4 fade-in">{{ $blog->created_at->date('d M Y') }}</p>
                 <!-- Photo Galleries Section with Swiper -->
                 <!-- Swiper Large Image (Initially shows the smallest ID image) -->
                 <div class="gallery-top fade-in">

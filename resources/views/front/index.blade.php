@@ -95,7 +95,7 @@
                 <p class="mt-2 fade-in">Butuh Website yang Profesional? <span class="text-secondary-light font-semibold">Hubungi Kami Sekarang!</span></p>
                 <a href="#contact"
                     class="mt-6 inline-block bg-secondary-light text-primary dark:text-elegant-black font-semibold py-3 px-8 rounded-full hover:bg-secondary-dark transition duration-100 fade-in">Contact Me!</a>
-                <a href="https://refaadstack.com/cv"
+                <a href="{{ route('front.cv') }}"
                     class="mt-6 inline-block bg-secondary-light text-primary dark:text-elegant-black font-semibold py-3 px-8 rounded-full hover:bg-secondary-dark transition duration-100 fade-in" target="_blank">Download CV</a>
             </div>
         </section>
