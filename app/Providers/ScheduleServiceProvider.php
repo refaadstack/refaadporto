@@ -13,7 +13,7 @@ class ScheduleServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->callAfterResolving(Schedule::class, function (Schedule $schedule) {
-            $schedule->command('sitemap:generate')->daily();
+            $schedule->command('sitemap:generate')->hourly();
         });
     }
 
