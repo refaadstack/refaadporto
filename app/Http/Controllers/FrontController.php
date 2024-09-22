@@ -52,4 +52,12 @@ class FrontController extends Controller
 
         return view('front.blog_show',compact(['blog','pict']));
     }
+    public function blog(){
+        $blog = Blog::orderBy('created_at', 'desc')->paginate(6);
+        return view('front.blogs',compact(['blog']));
+    }
+    public function portfolios(){
+        $portfolios = Portfolio::orderBy('created_at', 'desc')->paginate(6);
+        return view('front.portfolios',compact(['portfolios']));
+    }
 }
