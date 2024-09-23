@@ -66,7 +66,8 @@
            });
            
            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-           </script>
+    </script>
+    @stack('script')
 </body>
 </html>
 

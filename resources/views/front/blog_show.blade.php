@@ -31,3 +31,40 @@
     </section>
 </main>
 @endsection
+
+@push('script')
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const thumbnails = document.querySelectorAll('.thumbnail'); // Select all thumbnails
+        const mainImage = document.getElementById('mainImage'); // Get the main image element
+
+        // Add click event to each thumbnail
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                // Change the src of the main image to the src of the clicked thumbnail
+                mainImage.src = this.src;
+            });
+        });
+    });
+
+    // Fade-in animation
+    function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+            } else {
+                entry.target.classList.remove('appear');
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+@endpush
