@@ -50,24 +50,5 @@
             });
         });
     });
-
-    // Fade-in animation
-    function handleIntersection(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('appear');
-            } else {
-                entry.target.classList.remove('appear');
-            }
-        });
-    }
-
-    const observer = new IntersectionObserver(handleIntersection, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 @endpush
