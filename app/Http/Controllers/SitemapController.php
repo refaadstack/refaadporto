@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\Portfolio;
 use App\Models\Blog;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class SitemapController extends Controller
 {
@@ -44,11 +45,15 @@ class SitemapController extends Controller
             );
         }
 
-        // Simpan sitemap ke file sitemap.xml di public folder
+        // Simpan sitemap ke file
         $sitemap->writeToFile(public_path('sitemap.xml'));
 
-        // Jika kamu ingin melihat XML di browser:
-        return $sitemap->render();
+        // Baca file yang baru saja disimpan
+        $sitemapContent = file_get_contents(public_path('sitemap.xml'));
+
+        // Kembalikan konten sebagai response XML
+        return response($sitemapContent, 200)
+            ->header('Content-Type', 'text/xml');
     }
 }
 
