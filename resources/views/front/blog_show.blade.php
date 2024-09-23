@@ -32,6 +32,9 @@
 </main>
 @endsection
 
+@push('link')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+@endpush
 @push('script')
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>

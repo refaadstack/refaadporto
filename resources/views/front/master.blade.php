@@ -8,6 +8,7 @@
     <title>@yield('title')</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap" rel="stylesheet" />
+    @stack('link')
     <style>
         body {
             font-family: 'Poppins', sans-serif;
