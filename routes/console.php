@@ -9,4 +9,4 @@ Artisan::command('sitemap:generate', function () {
     // Logika untuk generate sitemap
     Log::channel('cronjob')->info('Cronjob sitemap berjalan pada: ' . now());
     $this->info('Sitemap has been generated.');
-})->purpose('Generate the sitemap')->everyMinute();
+})->purpose('Generate the sitemap')->hourly();
