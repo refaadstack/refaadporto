@@ -3,79 +3,52 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\Portfolio;
 use App\Models\Blog;
 
-class GenerateSitemap extends Command
+class GenerateSitemapCommand extends Command
 {
-    protected $signature = 'sitemap:generate {--force : Force update the sitemap}';
-    protected $description = 'Generate new sitemap.xml';
+    protected $signature = 'sitemap:generate';
+
+    protected $description = 'Generate the sitemap';
 
     public function handle()
     {
-        $this->info('Checking sitemap...');
+        $sitemap = SitemapGenerator::create(config('app.url'))
+            ->hasCrawled(function (Url $url) {
+                if ($url->segment(1) === '') {
+                    $url->setPriority(1.0);
+                } elseif (in_array($url->segment(1), ['portofolios', 'blog'])) {
+                    $url->setPriority(0.8);
+                } else {
+                    $url->setPriority(0.6);
+                }
 
-        $sitemapPath = public_path('sitemap.xml');
-        $forceUpdate = $this->option('force');
+                return $url;
+            })
+            ->getSitemap();
 
-        if (!$forceUpdate && file_exists($sitemapPath) && $this->isSitemapUpToDate()) {
-            $this->info('Sitemap is up to date. No changes needed.');
-            return;
-        }
+        // Add static pages
+        $sitemap->add(Url::create('/')->setPriority(1.0));
+        $sitemap->add(Url::create('/portofolios')->setPriority(0.8));
+        $sitemap->add(Url::create('/blog')->setPriority(0.8));
+        $sitemap->add(Url::create('/#about')->setPriority(0.5));
+        $sitemap->add(Url::create('/#contact')->setPriority(0.5));
 
-        $this->info('Generating new sitemap...');
-
-        // Buat instance sitemap baru
-        $sitemap = Sitemap::create();
-
-        // Tambahkan URL statis
-        $sitemap->add(Url::create('/'))
-                ->add(Url::create('/#about'))
-                ->add(Url::create('/portfolios'))
-                ->add(Url::create('/blog'))
-                ->add(Url::create('/#contact'));
-
-        // Tambahkan URL dinamis dari Portfolios
+        // Add dynamic portfolio pages
         Portfolio::all()->each(function (Portfolio $portfolio) use ($sitemap) {
-            $sitemap->add(
-                Url::create("/portfolios/{$portfolio->slug}")
-                    ->setLastModificationDate($portfolio->updated_at)
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                    ->setPriority(0.8)
-            );
+            $sitemap->add(Url::create("/portofolios/{$portfolio->slug}")->setPriority(0.7));
         });
 
-        // Tambahkan URL dinamis dari Blog
+        // Add dynamic blog pages
         Blog::all()->each(function (Blog $blog) use ($sitemap) {
-            $sitemap->add(
-                Url::create("/blog/{$blog->slug}")
-                    ->setLastModificationDate($blog->updated_at)
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                    ->setPriority(0.7)
-            );
+            $sitemap->add(Url::create("/blog/{$blog->slug}")->setPriority(0.7));
         });
 
-        // Simpan sitemap ke file
-        $sitemap->writeToFile($sitemapPath);
+        $sitemap->writeToFile(public_path('sitemap.xml'));
 
         $this->info('Sitemap generated successfully.');
-    }
-
-    private function isSitemapUpToDate()
-    {
-        $sitemapLastModified = filemtime(public_path('sitemap.xml'));
-        $latestContentUpdate = max([
-            $this->getLatestModelUpdate(Portfolio::class),
-            $this->getLatestModelUpdate(Blog::class)
-        ]);
-
-        return $sitemapLastModified >= $latestContentUpdate;
-    }
-
-    private function getLatestModelUpdate($model)
-    {
-        return $model::max('updated_at')->timestamp ?? 0;
     }
 }
