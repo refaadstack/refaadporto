@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Perkenalkan nama Saya Redho Fadillah Adha. Saya adalah Fullstack Web developer, Saya juga merupakan seorang lulusan Teknik Informatika yang sangat menyukai dan mendalami bidang website development. ini merupakan beberapa portfolio saya selama berkarir dibidang pemograman web">
     <meta name="google-site-verification" content="hJ9FmOJNR4HnyOdx2LyMpo2GWauL3417fdofT6rR4Tg" />
+
+    <link rel="icon" type="image/png" href="{{ asset('dist/img/icon.png') }}">
+    
+    <!-- Untuk mendukung berbagai ukuran dan perangkat -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/img/icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('dist/img/icon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('dist/img/icon.png') }}">
+
     <title>@yield('title')</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap" rel="stylesheet" />
