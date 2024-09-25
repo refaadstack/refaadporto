@@ -34,12 +34,19 @@ Artisan::command('sitemap:generate', function () {
 
         // Add dynamic portfolio pages
         Portfolio::all()->each(function (Portfolio $portfolio) use ($sitemap) {
-            $sitemap->add(Url::create("/portofolios/{$portfolio->slug}")->setPriority(0.7));
+            $sitemap->add(
+                Url::create("/portofolios/{$portfolio->slug}")
+                ->setLastModificationDate($portfolio->updated_at)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(0.8));
         });
 
         // Add dynamic blog pages
         Blog::all()->each(function (Blog $blog) use ($sitemap) {
-            $sitemap->add(Url::create("/blog/{$blog->slug}")->setPriority(0.7));
+            $sitemap->add(Url::create("/blog/{$blog->slug}")
+            ->setLastModificationDate($blog->updated_at)
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+            ->setPriority(0.7));
         });
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
