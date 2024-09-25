@@ -12,7 +12,7 @@ class GenerateSitemapCommand extends Command
 {
     protected $signature = 'sitemap:generate';
 
-    protected $description = 'Generate the sitemap';
+    protected $description = 'Generate the sitemap new';
 
     public function handle()
     {
@@ -49,6 +49,6 @@ class GenerateSitemapCommand extends Command
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
 
-        $this->info('Sitemap generated successfully.');
+        $this->info('Sitemap generated successfully at: ' . public_path('sitemap.xml'));
     }
 }
