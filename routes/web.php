@@ -13,5 +13,5 @@ Route::get('/cv', [FrontController::class,'cv'])->name('front.cv');
 route::get('/blog',[FrontController::class,'blog'])->name('blog');
 route::get('/portfolios',[FrontController::class,'portfolios'])->name('portfolios');
 
-Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+// Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
