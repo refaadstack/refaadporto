@@ -16,6 +16,9 @@
         <loc>http://127.0.0.1:8000/#contact</loc>
                                 </url>
     <url>
+        <loc>http://127.0.0.1:8000/cv</loc>
+                                </url>
+    <url>
         <loc>http://127.0.0.1:8000/portofolios/fuga-laudantium-voluptas-iusto-eos-lorem-blanditiis-enim-corrupti-ipsum-et</loc>
                                 <lastmod>2024-09-13T01:51:31+00:00</lastmod>
                     </url>
