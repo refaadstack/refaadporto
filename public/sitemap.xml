@@ -2,82 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
         <loc>http://127.0.0.1:8000</loc>
-    
-            </url>
+                                </url>
     <url>
         <loc>http://127.0.0.1:8000/portofolios</loc>
-    
-            </url>
+                                </url>
     <url>
         <loc>http://127.0.0.1:8000/blog</loc>
-    
-            </url>
+                                </url>
     <url>
         <loc>http://127.0.0.1:8000/#about</loc>
-    
-            </url>
+                                </url>
     <url>
         <loc>http://127.0.0.1:8000/#contact</loc>
-    
-            </url>
+                                </url>
     <url>
         <loc>http://127.0.0.1:8000/portofolios/fuga-laudantium-voluptas-iusto-eos-lorem-blanditiis-enim-corrupti-ipsum-et</loc>
-        <lastmod>2024-09-13T01:51:31+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-13T01:51:31+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/portofolios/exercitation-deserunt-harum-officia-sit-tempor-tempore</loc>
-        <lastmod>2024-09-13T01:16:50+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-13T01:16:50+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/portofolios/officia-aperiam-incididunt-incidunt-amet-dolorem</loc>
-        <lastmod>2024-09-13T01:11:40+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-13T01:11:40+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/portofolios/molestias-optio-molestias-est-minima-atque-sed-sapiente</loc>
-        <lastmod>2024-09-13T01:12:01+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-13T01:12:01+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/quia-ipsa-ducimus-eveniet-at-voluptatem-veniam-ipsa-eaque-autem-quae</loc>
-        <lastmod>2024-09-07T10:06:40+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-07T10:06:40+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/daisy-crafting</loc>
-        <lastmod>2024-09-22T18:21:30+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-22T18:21:30+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/awdadgawaw</loc>
-        <lastmod>2024-09-22T18:21:37+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-22T18:21:37+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/sistem-informasi-akademik-smkn-spp-merangin</loc>
-        <lastmod>2024-09-22T18:21:47+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-22T18:21:47+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/extension-vscode-untuk-ngoding-laravel</loc>
-        <lastmod>2024-09-22T18:22:00+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-22T18:22:00+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/brown-mix-project</loc>
-        <lastmod>2024-09-22T18:22:15+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-22T18:22:15+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/klikit-toys-inventory-sistem</loc>
-        <lastmod>2024-09-22T18:22:29+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-22T18:22:29+00:00</lastmod>
+                    </url>
     <url>
         <loc>http://127.0.0.1:8000/blog/inventore-sunt-quia-inventore-possimus-quod-nostrud-sed-voluptatem-tempor-tempora-delectus-veniam-voluptas-nemo-ullam-aliquip-maiores-illum</loc>
-        <lastmod>2024-09-23T22:47:31+00:00</lastmod>
-
-            </url>
+                                <lastmod>2024-09-23T22:47:31+00:00</lastmod>
+                    </url>
 </urlset>
