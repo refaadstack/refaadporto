@@ -12,25 +12,31 @@
                 <!-- Main Image -->
                 <div class="gallery-top fade-in">
                     @if($pict && $pict->url)
-                        <img id="mainImage" src="{{ Storage::url($pict->url) }}" alt="{{ $blog->slug }}" class="w-full h-500 object-cover shadow-lg mt-10 rounded-lg">
-                    @else
-                        <div id="mainImage" class="w-full h-64 bg-gray-300 flex items-center justify-center text-gray-500">
+                        <img id="mainImage" src="{{ Storage::url($pict->url) }}" alt="{{ $blog->slug }}" class="w-full h-[auto] object-cover shadow-lg mt-10">
+                    @elseif($blog->thumbnail)
+                        <img id="mainImage" src="{{ Storage::url($blog->thumbnail) }}" alt="{{ $blog->slug }}" class="w-full h-[auto] object-cover shadow-lg mt-10">
+                    {{-- @else
+                        <div id="mainImage" class="w-full h-64 bg-gray-300 flex items-center justify-center text-gray-500 mt-10">
                             No image available
-                        </div>
+                        </div> --}}
                     @endif
                 </div>
                 
                 <!-- Thumbnails Section -->
                 <div id="thumbnailsContainer" class="gallery-thumbs mt-6 fade-in flex flex-wrap justify-center gap-4">
-                    @forelse($blog->photoGalleries as $photo)
-                        <img src="{{ Storage::url($photo->url) }}" alt="{{ $blog->slug }}" class="thumbnail w-12 h-12 object-cover rounded-full cursor-pointer border-2 border-transparent hover:border-yellow-500 transition-all duration-300 fade-in" data-id="{{ $photo->id }}">
-                    @empty
-                        <p class="text-center text-gray-300">No additional images available.</p>
-                    @endforelse
+                    @if($blog->thumbnail && !$blog->photoGalleries->count())
+                        <img src="{{ Storage::url($blog->thumbnail) }}" alt="{{ $blog->slug }}" class="thumbnail w-12 h-12 object-cover rounded-full cursor-pointer border-2 border-secondary transition-all duration-300 fade-in" data-id="thumbnail">
+                    @else
+                        @forelse($blog->photoGalleries as $photo)
+                            <img src="{{ Storage::url($photo->url) }}" alt="{{ $blog->slug }}" class="thumbnail w-12 h-12 object-cover rounded-full cursor-pointer border-2 border-transparent hover:border-secondary transition-all duration-300 fade-in" data-id="{{ $photo->id }}">
+                        @empty
+                            <p class="text-center text-gray-300">No additional images available.</p>
+                        @endforelse
+                    @endif
                 </div>
             </div>
             <div class="mt-10">
-                <article class="prose prose-lg prose-yellow max-w-none text-gray-800 bg-gray-400 rounded-lg p-6 fade-in">
+                <article class="prose prose-lg prose-secondary max-w-none text-gray-800 bg-gray-400 rounded-lg p-6 fade-in">
                     {!! $blog->content !!}
                 </article>
             </div>
@@ -65,7 +71,7 @@
             thumbnails.forEach(thumbnail => {
                 thumbnail.addEventListener('click', function() {
                     // Remove active class from all thumbnails
-                    thumbnails.forEach(t => t.classList.remove('border-yellow-500'));
+                    thumbnails.forEach(t => t.classList.remove('border-secondary'));
                     // Add active class to clicked thumbnail
                     this.classList.add('border-secondary');
 
@@ -86,7 +92,7 @@
 
             // Set the first thumbnail as active by default
             if (thumbnails.length > 0) {
-                thumbnails[0].classList.add('border-yellow-500');
+                thumbnails[0].classList.add('border-secondary');
             }
         }
 

@@ -23,10 +23,11 @@ class FrontController extends Controller
     }
     public function detail($slug){
             $portfolios = Portfolio::where('slug', $slug)->first();
+            $pict = $portfolios->photoGalleries->sortBy('id')->first();
             // $portfolio->where('slug',$slug)->first();
 
             // dd($portfolios);
-        return view('front.detail',compact(['portfolios']));
+        return view('front.detail',compact(['portfolios','pict']));
     }
     public function cv(){
 
